@@ -10,4 +10,4 @@ Maze generator with backtracking algorithm
 ![](readmeImages/colorExemple1.gif)
 
 
-![](readmeImages/colorExemple1.gif)
+![](readmeImages/colorExemple2.gif)
