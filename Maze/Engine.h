@@ -27,6 +27,7 @@ public:
 		m_matWallV = std::vector<bool>(m_nbRow * (m_nbColumn - 1), true);
 		m_colorCells = std::vector<short>(m_nbRow * m_nbColumn, backgroundColor);
 		currentCoord = { rand() % m_nbColumn,rand() % m_nbRow };
+		start = false;
 		olcConsoleGameEngine::ConstructConsole(width, height, 8, 8);
 	}
 private:
@@ -37,6 +38,7 @@ private:
 	std::vector<Coord> m_coordChecked;
 	Coord currentCoord;
 	short m_pathColor, m_currentCellColor, m_backgroundColor;
+	bool start;
 
 	std::vector<Coord> possibleCoord(Coord c)
 	{
@@ -97,9 +99,9 @@ private:
 			for (int j = 0; j < m_nbColumn; j++)
 			{
 				Fill(indexX, indexY,indexX+m_dimCell,indexY+m_dimCell, 9608, m_colorCells[i * m_nbColumn + j]);
-				indexX += 4;
+				indexX += m_dimCell+1;
 			}
-			indexY += 4;
+			indexY += m_dimCell+1;
 		}
 
 		indexX = m_dimCell + 1;
@@ -110,12 +112,12 @@ private:
 			for (int j = 0; j < m_nbColumn - 1; j++)
 			{
 				if (m_matWallV[i * (m_nbColumn-1) + j])
-					DrawLine(indexX, indexY, indexX, indexY + 2, 9608, m_backgroundColor);
+					DrawLine(indexX, indexY, indexX, indexY + m_dimCell - 1, 9608, m_backgroundColor);
 				else
-					DrawLine(indexX, indexY, indexX, indexY + 2, 9608, m_pathColor);
-				indexX += 4;
+					DrawLine(indexX, indexY, indexX, indexY + m_dimCell - 1, 9608, m_pathColor);
+				indexX += m_dimCell + 1;
 			}
-			indexY += 4;
+			indexY += m_dimCell + 1;
 		}
 
 
@@ -127,12 +129,12 @@ private:
 			for (int j = 0; j < m_nbColumn; j++)
 			{
 				if (m_matWallH[i * m_nbColumn + j])
-					DrawLine(indexX, indexY, indexX + 2, indexY, 9608, m_backgroundColor);
+					DrawLine(indexX, indexY, indexX + m_dimCell-1, indexY, 9608, m_backgroundColor);
 				else
-					DrawLine(indexX, indexY, indexX + 2, indexY, 9608, m_pathColor);
-				indexX += 4;
+					DrawLine(indexX, indexY, indexX + m_dimCell - 1, indexY, 9608, m_pathColor);
+				indexX += m_dimCell + 1;
 			}
-			indexY += 4;
+			indexY += m_dimCell + 1;
 		}
 	}
 	void backTrackIteration()
@@ -174,7 +176,10 @@ protected:
 	bool OnUserUpdate(float fEslapsedTime)
 	{
 		Fill(0, 0, ScreenWidth(), ScreenHeight(), 9608, m_backgroundColor);
-		backTrackIteration();
+		if (!start && GetKey(VK_SPACE).bPressed)
+			start = true;
+		if(start)
+			backTrackIteration();
 		
 		return true;
 	}
