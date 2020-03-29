@@ -1,5 +1,5 @@
 # Maze
-Maze generator with backtracking algorithm
+Maze generator with backtracking algorithm. The gif format makes the algorithm looks slower.
 
 # Generation 
 
