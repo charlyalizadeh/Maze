@@ -1,13 +1,17 @@
 # Maze
 Maze generator with backtracking algorithm
 
-# Exemples 
+# Generation 
 
-![](readmeImages/partyExemple.gif)
+![](readmeImages/generationExample.gif)
 
 # Color
 
-![](readmeImages/colorExemple1.gif)
+![](readmeImages/colorExample1.gif)
 
 
-![](readmeImages/colorExemple1.gif)
+![](readmeImages/colorExample1.gif)
+
+# Game
+
+![](readmeImages/gameExample.gif)

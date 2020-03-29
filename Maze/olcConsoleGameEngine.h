@@ -435,6 +435,13 @@ public:
 			m_bufScreen[y * m_nScreenWidth + x].Attributes = col;
 		}
 	}
+	virtual short GetCaracterColor(int x,int y)
+	{
+		if (x >= 0 && x < m_nScreenWidth && y >= 0 && y < m_nScreenHeight)
+		{
+			return m_bufScreen[y * m_nScreenWidth + x].Attributes;
+		}
+	}
 
 	void Fill(int x1, int y1, int x2, int y2, short c = 0x2588, short col = 0x000F)
 	{

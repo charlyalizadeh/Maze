@@ -3,7 +3,7 @@
 
 int main() 
 {
-	Engine* test = new Engine(15,15,6,FG_BLACK,FG_MAGENTA,FG_WHITE);
+	Engine* test = new Engine(20,20,3);
 	test->Start();
 	return 0;
 }
