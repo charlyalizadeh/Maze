@@ -10,7 +10,7 @@ Maze generator with backtracking algorithm. The gif format makes the algorithm l
 ![](readmeImages/colorExample1.gif)
 
 
-![](readmeImages/colorExample1.gif)
+![](readmeImages/colorExample2.gif)
 
 # Game
 
